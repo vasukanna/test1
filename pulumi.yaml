@@ -1,0 +1,3 @@
+name: aws_k8s-argocd
+runtime: nodejs
+description: create aws vpc kubernetes cluster, and deploy ArgoCD
