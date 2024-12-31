@@ -1,0 +1,40 @@
+on:
+  push:
+    branches:
+      - main
+env:
+  AWS_ACCESS_KEY_ID: "AKIA2FXADPVJUZRSKKO4"
+  AWS_SECRET_ACCESS_KEY: "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"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+
+      - name: Install pulumi CLI
+        uses: pulumi/actions-install-pulumi-cli@v3
+        with:
+          pulumi-version: latest
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      
+      - name: Install Dependencies
+        run: npm install
+      
+      - name: AWS Configure
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Deploy with pulumi
+        run: pulumi up --yes
+          
+  
