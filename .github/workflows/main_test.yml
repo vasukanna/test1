@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install pulumi CLI
-        uses: pulumi/actions-install-pulumi-cli@v3
+        uses: pulumi/actions@v3
         with:
           pulumi-version: latest
 
@@ -33,5 +33,7 @@ jobs:
 
       - name: Deploy with pulumi
         run: pulumi up --yes
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }
           
   
