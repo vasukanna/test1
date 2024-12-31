@@ -15,6 +15,7 @@ jobs:
         uses: pulumi/actions@v3
         with:
           pulumi-version: latest
+    
 
       - name: Install Node.js
         uses: actions/setup-node@v3
@@ -33,5 +34,7 @@ jobs:
 
       - name: Deploy with pulumi
         run: pulumi up --yes
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
           
   
