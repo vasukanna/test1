@@ -2,10 +2,7 @@ on:
   push:
     branches:
       - main
-env:
-  AWS_ACCESS_KEY_ID: "AKIA2FXADPVJUZRSKKO4"
-  AWS_SECRET_ACCESS_KEY: "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"
-
+ 
 jobs:
   deploy:
     runs-on: ubuntu-latest
